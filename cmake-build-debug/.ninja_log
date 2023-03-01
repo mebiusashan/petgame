@@ -1,0 +1,15 @@
+# ninja log v5
+19	97	6993877110757242	CMakeFiles/petgame.dir/src/utils/Language.cpp.obj	e513265db6138c6b
+0	340	6993909047281703	build.ninja	b43bb818683627a5
+5	1214	6993901270540063	CMakeFiles/petgame.dir/src/main.cpp.obj	be6a4c5be86f9c
+1279	2030	6993902254839805	petgame.exe	15d8859153970436
+2	252	6993885554696283	CMakeFiles/petgame.dir/src/view/StartUpView.cpp.obj	1b92226668bb1e61
+2	1279	6993902247359434	CMakeFiles/petgame.dir/src/Game.cpp.obj	b84feba1d5bb61cf
+7	2120	6993901279565622	CMakeFiles/petgame.dir/src/system/ConfigSystem.cpp.obj	6b824585190e2432
+9	63	6993909109424990	CMakeFiles/petgame.dir/src/utils/Language.cpp.obj	ea0d2d1b44c7f937
+16	346	6993909112267396	CMakeFiles/petgame.dir/src/view/StartUpView.cpp.obj	4b17e43f31762c81
+20	347	6993909112257420	CMakeFiles/petgame.dir/src/utils/Path.cpp.obj	84d53bfd74934444
+6	1328	6993909122081136	CMakeFiles/petgame.dir/src/main.cpp.obj	22a09ad54010a9b0
+3	1448	6993909123278178	CMakeFiles/petgame.dir/src/Game.cpp.obj	4f0bd32abe8e3dc8
+13	2316	6993909131924802	CMakeFiles/petgame.dir/src/system/ConfigSystem.cpp.obj	841afce38938f9c0
+2316	3032	6993909139090587	petgame.exe	4e5c38e8a27ae783
