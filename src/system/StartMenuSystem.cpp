@@ -8,11 +8,11 @@
  *                                                                                             *
  *                 Project Name : PetGame                                                      *
  *                                                                                             *
- *                    File Name : BaseView.h                                                   *
+ *                    File Name : StartMenuSystem.h                                            *
  *                                                                                             *
  *                   Programmer : Mebius Ashan                                                 *
  *                                                                                             *
- *                   Start Date : 03/01/22                                                     *
+ *                   Start Date : 03/02/22                                                     *
  *                                                                                             *
  *                  Last Update : 03/02/22                                                     *
  *                                                                                             *
@@ -21,16 +21,57 @@
  * Functions:                                                                                  *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-#ifndef PETGAME_BASEVIEW_H
-#define PETGAME_BASEVIEW_H
+#include <iostream>
 
+#include "StartMenuSystem.h"
+#include "SystemManager.h"
 
-class BaseView {
-public:
-    virtual void show() = 0;
+#include "../view/StartUpView.h"
 
-    virtual void destory() = 0;
-};
+bool StartMenuSystem::InitSystem() {
+    return true;
+}
 
+bool StartMenuSystem::Input(std::string &arg) {
+    if (curView == 0) {
+        return startUpCtl->Input(arg);
+    }
+    return true;
+}
 
-#endif //PETGAME_BASEVIEW_H
+void StartMenuSystem::ShowMenuView() {
+    if (curView == 0) {
+        StartUpView *startUpView = new StartUpView;
+        startUpCtl = new StartUpController(startUpView);
+        startUpCtl->SetCallback(this,
+                                &StartMenuSystem::startNewGameWrapper,
+                                &StartMenuSystem::showRecViewWrapper,
+                                &StartMenuSystem::showOptViewWrapper);
+        startUpCtl->Run();
+    }
+
+}
+
+void StartMenuSystem::startNewGame() {
+    std::cout << "新游戏";
+}
+
+void StartMenuSystem::showRecView() {
+    std::cout << "记录";
+}
+
+void StartMenuSystem::showOptView() {
+    std::cout << "选项";
+}
+
+void StartMenuSystem::startNewGameWrapper(void *c) {
+    ((StartMenuSystem *) c)->startNewGame();
+}
+
+void StartMenuSystem::showRecViewWrapper(void *c) {
+    ((StartMenuSystem *) c)->showRecView();
+}
+
+void StartMenuSystem::showOptViewWrapper(void *c) {
+    ((StartMenuSystem *) c)->showOptView();
+}

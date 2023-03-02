@@ -8,32 +8,53 @@
  *                                                                                             *
  *                 Project Name : PetGame                                                      *
  *                                                                                             *
- *                    File Name : main.cpp                                                     *
+ *                    File Name : StartMenuSystem.h                                            *
  *                                                                                             *
  *                   Programmer : Mebius Ashan                                                 *
  *                                                                                             *
- *                   Start Date : 03/01/22                                                     *
+ *                   Start Date : 03/02/22                                                     *
  *                                                                                             *
- *                  Last Update : 03/01/22                                                     *
+ *                  Last Update : 03/02/22                                                     *
  *                                                                                             *
  *                                                                                             *
  *---------------------------------------------------------------------------------------------*
  * Functions:                                                                                  *
- *   main -- 程序启动入口                                                                       *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-#include "Game.h"
 
-//入口仅做系统主循环
-//同时对系统信号做相应
-int main() {
-    Game game;
-    bool rel = game.Init();
-    if (!rel)
-        return 0;
-    game.Run();
-    while (game.GetInput()) {
+#ifndef PETGAME_STARTMENUSYSTEM_H
+#define PETGAME_STARTMENUSYSTEM_H
 
-    }
-    return 0;
-}
+#include "BaseSystem.h"
+#include "../controller/StartUpController.h"
+
+class StartMenuSystem : public BaseSystem {
+public:
+    bool InitSystem();
+
+    void ShowMenuView();
+
+    bool Input(string &arg);
+
+protected:
+    void startNewGame();
+
+    void showRecView();
+
+    void showOptView();
+
+    static void startNewGameWrapper(void *c);
+
+    static void showRecViewWrapper(void *c);
+
+    static void showOptViewWrapper(void *c);
+
+private:
+    int curView = 0;
+
+    StartUpController *startUpCtl;
+
+};
+
+
+#endif //PETGAME_STARTMENUSYSTEM_H

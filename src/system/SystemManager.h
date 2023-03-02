@@ -8,32 +8,51 @@
  *                                                                                             *
  *                 Project Name : PetGame                                                      *
  *                                                                                             *
- *                    File Name : main.cpp                                                     *
+ *                    File Name : SystemManager.h                                              *
  *                                                                                             *
  *                   Programmer : Mebius Ashan                                                 *
  *                                                                                             *
- *                   Start Date : 03/01/22                                                     *
+ *                   Start Date : 03/02/22                                                     *
  *                                                                                             *
- *                  Last Update : 03/01/22                                                     *
+ *                  Last Update : 03/02/22                                                     *
  *                                                                                             *
  *                                                                                             *
  *---------------------------------------------------------------------------------------------*
  * Functions:                                                                                  *
- *   main -- 程序启动入口                                                                       *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-#include "Game.h"
 
-//入口仅做系统主循环
-//同时对系统信号做相应
-int main() {
-    Game game;
-    bool rel = game.Init();
-    if (!rel)
-        return 0;
-    game.Run();
-    while (game.GetInput()) {
+#ifndef PETGAME_SYSTEMMANAGER_H
+#define PETGAME_SYSTEMMANAGER_H
 
-    }
-    return 0;
-}
+#define CFG_SYS "cfgSys"
+#define STA_SYS "staSys"
+#define STM_SYS "stmSys"
+
+class BaseSystem;
+
+#include <iostream>
+#include "map"
+
+
+using namespace std;
+
+class SystemManager {
+public:
+    void AddSystem(BaseSystem *sys, string name) {
+        sysPool.insert(pair<string, BaseSystem *>(name, sys));
+    };
+
+    template<typename T>
+    T GetSystemByName(string name) {
+        auto iter = sysPool.find(name);
+        if (iter != sysPool.end())
+            return dynamic_cast<T>(iter->second);
+        return nullptr;
+    };
+
+protected:
+    map<string, BaseSystem *> sysPool;
+};
+
+#endif //PETGAME_SYSTEMMANAGER_H

@@ -14,7 +14,7 @@
  *                                                                                             *
  *                   Start Date : 03/01/22                                                     *
  *                                                                                             *
- *                  Last Update : 03/01/22                                                     *
+ *                  Last Update : 03/02/22                                                     *
  *                                                                                             *
  *                                                                                             *
  *---------------------------------------------------------------------------------------------*
@@ -27,9 +27,13 @@
 
 #include "../libs/json.hpp"
 
-class ConfigSystem {
+#include "BaseSystem.h"
+
+class ConfigSystem : public BaseSystem {
 public:
     bool InitSystem();
+
+    bool Input(string &arg);
 
 protected:
     nlohmann::json petJsonData;

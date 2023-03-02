@@ -14,7 +14,7 @@
  *                                                                                             *
  *                   Start Date : 03/01/22                                                     *
  *                                                                                             *
- *                  Last Update : 03/01/22                                                     *
+ *                  Last Update : 03/02/22                                                     *
  *                                                                                             *
  *                                                                                             *
  *---------------------------------------------------------------------------------------------*
@@ -25,6 +25,15 @@
 #define PETGAME_GAME_H
 
 #include "system/ConfigSystem.h"
+#include "system/StatusSystem.h"
+#include "system/SystemManager.h"
+#include "controller/StartUpController.h"
+
+
+#define INIT_SYS(val, cls, name) cls *val = new cls; \
+sysMgr.AddSystem((val), name);                       \
+val->SetSysMgr(&sysMgr);                             \
+if(!(val)->InitSystem()){return false;}
 
 //这个类是游戏的主逻辑入口
 //负责初始化游戏中的配置模块
@@ -35,10 +44,13 @@ class Game {
 public:
     bool Init();
 
+    void Run();
+
     bool GetInput();
 
 protected:
-    ConfigSystem *configSys;
+    SystemManager sysMgr;
+    BaseSystem *curSys;
 };
 
 

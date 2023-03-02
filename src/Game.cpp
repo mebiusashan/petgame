@@ -14,7 +14,7 @@
  *                                                                                             *
  *                   Start Date : 03/01/22                                                     *
  *                                                                                             *
- *                  Last Update : 03/01/22                                                     *
+ *                  Last Update : 03/02/22                                                     *
  *                                                                                             *
  *                                                                                             *
  *---------------------------------------------------------------------------------------------*
@@ -26,7 +26,7 @@
 #include <iostream>
 
 #include "Game.h"
-#include "view/StartUpView.h"
+#include "system/StartMenuSystem.h"
 
 using namespace std;
 
@@ -42,22 +42,25 @@ using namespace std;
  *   03/01/2022 Mebius : Created.                                                              *
  *=============================================================================================*/
 bool Game::Init() {
-    configSys = new ConfigSystem;
-    if (!configSys->InitSystem()) {
-        return false;
+    INIT_SYS(cfgSys, ConfigSystem, CFG_SYS);
+    INIT_SYS(staSys, StatusSystem, STA_SYS);
+    INIT_SYS(stmSys, StartMenuSystem, STM_SYS);
+
+    return true;
+}
+
+void Game::Run() {
+    StatusSystem *staSys = sysMgr.GetSystemByName<StatusSystem*>(STA_SYS);
+    if (staSys != nullptr) {
+        staSys->Run();
+        curSys = staSys;
     }
 
-    StartUpView startUpView;
-    startUpView.show();
-    return true;
 }
 
 bool Game::GetInput() {
     string inputStr;
     cin >> inputStr;
-    if (inputStr == "4") {
-        return false;
-    }
-    return true;
+    return curSys->Input(inputStr);
 }
 

@@ -8,32 +8,60 @@
  *                                                                                             *
  *                 Project Name : PetGame                                                      *
  *                                                                                             *
- *                    File Name : main.cpp                                                     *
+ *                    File Name : StartUpController.h                                          *
  *                                                                                             *
  *                   Programmer : Mebius Ashan                                                 *
  *                                                                                             *
- *                   Start Date : 03/01/22                                                     *
+ *                   Start Date : 03/02/22                                                     *
  *                                                                                             *
- *                  Last Update : 03/01/22                                                     *
+ *                  Last Update : 03/02/22                                                     *
  *                                                                                             *
  *                                                                                             *
  *---------------------------------------------------------------------------------------------*
  * Functions:                                                                                  *
- *   main -- 程序启动入口                                                                       *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-#include "Game.h"
 
-//入口仅做系统主循环
-//同时对系统信号做相应
-int main() {
-    Game game;
-    bool rel = game.Init();
-    if (!rel)
-        return 0;
-    game.Run();
-    while (game.GetInput()) {
+#ifndef PETGAME_STARTUPCONTROLLER_H
+#define PETGAME_STARTUPCONTROLLER_H
 
-    }
-    return 0;
-}
+#include <iostream>
+
+class StartMenuSystem;
+
+#include "../view/BaseView.h"
+
+using namespace std;
+
+class StartUpController {
+public:
+    StartUpController(BaseView *view);
+
+    ~StartUpController();
+
+    void SetCallback(void *c,
+                     void (*StartNewGame)(void *pVoid),
+                     void (*ShowRecView)(void *context),
+                     void (*ShowOptView)(void *context));
+
+    void Run();
+
+    bool Input(string &arg);
+
+protected:
+    void selectExit();
+
+protected:
+    BaseView *bindView;
+
+    void (*StartNewGame)(void *context);
+
+    void (*ShowRecView)(void *context);
+
+    void (*ShowOptView)(void *context);
+
+    void *context;
+};
+
+
+#endif //PETGAME_STARTUPCONTROLLER_H

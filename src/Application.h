@@ -8,32 +8,32 @@
  *                                                                                             *
  *                 Project Name : PetGame                                                      *
  *                                                                                             *
- *                    File Name : main.cpp                                                     *
+ *                    File Name : Application.h                                                *
  *                                                                                             *
  *                   Programmer : Mebius Ashan                                                 *
  *                                                                                             *
- *                   Start Date : 03/01/22                                                     *
+ *                   Start Date : 03/02/22                                                     *
  *                                                                                             *
- *                  Last Update : 03/01/22                                                     *
+ *                  Last Update : 03/02/22                                                     *
  *                                                                                             *
  *                                                                                             *
  *---------------------------------------------------------------------------------------------*
  * Functions:                                                                                  *
- *   main -- 程序启动入口                                                                       *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-#include "Game.h"
 
-//入口仅做系统主循环
-//同时对系统信号做相应
-int main() {
-    Game game;
-    bool rel = game.Init();
-    if (!rel)
-        return 0;
-    game.Run();
-    while (game.GetInput()) {
+#ifndef PETGAME_APPLICATION_H
+#define PETGAME_APPLICATION_H
 
-    }
-    return 0;
-}
+enum GameStatus {
+    MENU = 0,
+
+};
+
+class Application {
+public:
+    static void Exit();
+};
+
+
+#endif //PETGAME_APPLICATION_H

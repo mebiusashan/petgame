@@ -8,32 +8,47 @@
  *                                                                                             *
  *                 Project Name : PetGame                                                      *
  *                                                                                             *
- *                    File Name : main.cpp                                                     *
+ *                    File Name : StatusSystem.h                                               *
  *                                                                                             *
  *                   Programmer : Mebius Ashan                                                 *
  *                                                                                             *
- *                   Start Date : 03/01/22                                                     *
+ *                   Start Date : 03/02/22                                                     *
  *                                                                                             *
- *                  Last Update : 03/01/22                                                     *
+ *                  Last Update : 03/02/22                                                     *
  *                                                                                             *
  *                                                                                             *
  *---------------------------------------------------------------------------------------------*
  * Functions:                                                                                  *
- *   main -- 程序启动入口                                                                       *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-#include "Game.h"
 
-//入口仅做系统主循环
-//同时对系统信号做相应
-int main() {
-    Game game;
-    bool rel = game.Init();
-    if (!rel)
-        return 0;
-    game.Run();
-    while (game.GetInput()) {
+#ifndef PETGAME_STATUSSYSTEM_H
+#define PETGAME_STATUSSYSTEM_H
 
-    }
-    return 0;
-}
+#include "../Application.h"
+#include "BaseSystem.h"
+
+class StatusSystem : public BaseSystem {
+
+public:
+    StatusSystem();
+
+    ~StatusSystem();
+
+    bool InitSystem();
+
+    bool Input(string &arg);
+
+    void Run();
+
+    GameStatus GetCurStatus();
+
+private:
+    GameStatus curStatus = MENU;
+    BaseSystem *curSys;
+
+
+};
+
+
+#endif //PETGAME_STATUSSYSTEM_H

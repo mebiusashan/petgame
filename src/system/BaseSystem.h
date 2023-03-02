@@ -8,32 +8,39 @@
  *                                                                                             *
  *                 Project Name : PetGame                                                      *
  *                                                                                             *
- *                    File Name : main.cpp                                                     *
+ *                    File Name : BaseSystem.h                                                 *
  *                                                                                             *
  *                   Programmer : Mebius Ashan                                                 *
  *                                                                                             *
- *                   Start Date : 03/01/22                                                     *
+ *                   Start Date : 03/02/22                                                     *
  *                                                                                             *
- *                  Last Update : 03/01/22                                                     *
+ *                  Last Update : 03/02/22                                                     *
  *                                                                                             *
  *                                                                                             *
  *---------------------------------------------------------------------------------------------*
  * Functions:                                                                                  *
- *   main -- 程序启动入口                                                                       *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-#include "Game.h"
 
-//入口仅做系统主循环
-//同时对系统信号做相应
-int main() {
-    Game game;
-    bool rel = game.Init();
-    if (!rel)
-        return 0;
-    game.Run();
-    while (game.GetInput()) {
+#ifndef PETGAME_BASESYSTEM_H
+#define PETGAME_BASESYSTEM_H
 
-    }
-    return 0;
-}
+#include <iostream>
+
+class SystemManager;
+
+using namespace std;
+
+class BaseSystem {
+public:
+    virtual bool InitSystem() = 0;
+
+    virtual bool Input(string &arg) = 0;
+
+    void SetSysMgr(SystemManager *mgr) { sysMgr = mgr; };
+
+protected:
+    SystemManager *sysMgr;
+};
+
+#endif //PETGAME_BASESYSTEM_H
