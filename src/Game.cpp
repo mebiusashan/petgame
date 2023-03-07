@@ -34,7 +34,7 @@ using namespace std;
  * Game::Init -- 初始化各个系统模块                                                             *
  *                                                                                             *
  *                                                                                             *
-* OUTPUT:  返回系统启动结果，如果某些模块启动失败, 则返回false                                    *
+ * OUTPUT:  返回系统启动结果，如果某些模块启动失败, 则返回false                                   *
  *                                                                                             *
  * WARNINGS:   none                                                                            *
  *                                                                                             *

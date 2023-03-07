@@ -109,6 +109,24 @@ build CMakeFiles/petgame.dir/src/Game.cpp.obj: CXX_COMPILER__petgame_Debug E$:/g
   OBJECT_DIR = CMakeFiles\petgame.dir
   OBJECT_FILE_DIR = CMakeFiles\petgame.dir\src
 
+build CMakeFiles/petgame.dir/src/system/BattleSystem.cpp.obj: CXX_COMPILER__petgame_Debug E$:/git/petgame/src/system/BattleSystem.cpp || cmake_object_order_depends_target_petgame
+  DEP_FILE = CMakeFiles\petgame.dir\src\system\BattleSystem.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++11
+  OBJECT_DIR = CMakeFiles\petgame.dir
+  OBJECT_FILE_DIR = CMakeFiles\petgame.dir\src\system
+
+build CMakeFiles/petgame.dir/src/system/BattleInfo.cpp.obj: CXX_COMPILER__petgame_Debug E$:/git/petgame/src/system/BattleInfo.cpp || cmake_object_order_depends_target_petgame
+  DEP_FILE = CMakeFiles\petgame.dir\src\system\BattleInfo.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++11
+  OBJECT_DIR = CMakeFiles\petgame.dir
+  OBJECT_FILE_DIR = CMakeFiles\petgame.dir\src\system
+
+build CMakeFiles/petgame.dir/src/system/BattleRel.cpp.obj: CXX_COMPILER__petgame_Debug E$:/git/petgame/src/system/BattleRel.cpp || cmake_object_order_depends_target_petgame
+  DEP_FILE = CMakeFiles\petgame.dir\src\system\BattleRel.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++11
+  OBJECT_DIR = CMakeFiles\petgame.dir
+  OBJECT_FILE_DIR = CMakeFiles\petgame.dir\src\system
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target petgame
@@ -117,7 +135,7 @@ build CMakeFiles/petgame.dir/src/Game.cpp.obj: CXX_COMPILER__petgame_Debug E$:/g
 #############################################
 # Link the executable petgame.exe
 
-build petgame.exe: CXX_EXECUTABLE_LINKER__petgame_Debug CMakeFiles/petgame.dir/src/main.cpp.obj CMakeFiles/petgame.dir/src/view/StartUpView.cpp.obj CMakeFiles/petgame.dir/src/utils/Language.cpp.obj CMakeFiles/petgame.dir/src/system/ConfigSystem.cpp.obj CMakeFiles/petgame.dir/src/utils/Path.cpp.obj CMakeFiles/petgame.dir/src/controller/StartUpController.cpp.obj CMakeFiles/petgame.dir/src/Application.cpp.obj CMakeFiles/petgame.dir/src/system/StatusSystem.cpp.obj CMakeFiles/petgame.dir/src/system/StartMenuSystem.cpp.obj CMakeFiles/petgame.dir/src/Game.cpp.obj
+build petgame.exe: CXX_EXECUTABLE_LINKER__petgame_Debug CMakeFiles/petgame.dir/src/main.cpp.obj CMakeFiles/petgame.dir/src/view/StartUpView.cpp.obj CMakeFiles/petgame.dir/src/utils/Language.cpp.obj CMakeFiles/petgame.dir/src/system/ConfigSystem.cpp.obj CMakeFiles/petgame.dir/src/utils/Path.cpp.obj CMakeFiles/petgame.dir/src/controller/StartUpController.cpp.obj CMakeFiles/petgame.dir/src/Application.cpp.obj CMakeFiles/petgame.dir/src/system/StatusSystem.cpp.obj CMakeFiles/petgame.dir/src/system/StartMenuSystem.cpp.obj CMakeFiles/petgame.dir/src/Game.cpp.obj CMakeFiles/petgame.dir/src/system/BattleSystem.cpp.obj CMakeFiles/petgame.dir/src/system/BattleInfo.cpp.obj CMakeFiles/petgame.dir/src/system/BattleRel.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\petgame.dir

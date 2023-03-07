@@ -8,66 +8,53 @@
  *                                                                                             *
  *                 Project Name : PetGame                                                      *
  *                                                                                             *
- *                    File Name : StatusSystem.h                                               *
+ *                    File Name : BattleSystem.h                                               *
  *                                                                                             *
  *                   Programmer : Mebius Ashan                                                 *
  *                                                                                             *
- *                   Start Date : 03/02/22                                                     *
+ *                   Start Date : 03/04/22                                                     *
  *                                                                                             *
- *                  Last Update : 03/02/22                                                     *
+ *                  Last Update : 03/04/22                                                     *
  *                                                                                             *
  *                                                                                             *
  *---------------------------------------------------------------------------------------------*
  * Functions:                                                                                  *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-#include "iostream"
 
-#include "StatusSystem.h"
+#ifndef PETGAME_BATTLESYSTEM_H
+#define PETGAME_BATTLESYSTEM_H
 
-#include "StartMenuSystem.h"
-#include "SystemManager.h"
+#include "map"
+#include "list"
 
-#include "BattleRel.h"
 #include "BattleInfo.h"
-#include "BattleSystem.h"
-
-StatusSystem::StatusSystem() {
-
-}
-
-StatusSystem::~StatusSystem() {
-
-}
-
-bool StatusSystem::InitSystem() {
-    return true;
-}
-
-bool StatusSystem::Input(std::string &arg) {
-    return curSys->Input(arg);
-}
-
-void StatusSystem::Run() {
-    BattleInfo a;
-    BattleInfo b;
-    BattleSystem s;
-    s.startRound();
-    s.AddBattleInfo(1, a);
-    s.AddBattleInfo(2, b);
-    auto rel = s.Attack(1, 2);
-    std::cout << "攻击减血" << rel->defenseCutHp << std::endl;
-    std::cout << "B剩余血" << b.HP << std::endl;
+#include "BattleRel.h"
 
 
-    if (curStatus == MENU) {
-        StartMenuSystem *stmSys = sysMgr->GetSystemByName<StartMenuSystem *>(STM_SYS);
-        stmSys->ShowMenuView();
-        curSys = stmSys;
-    }
-}
+class BattleSystem {
 
-GameStatus StatusSystem::GetCurStatus() {
-    return curStatus;
-}
+public:
+    BattleSystem();
+    ~BattleSystem();
 
+    void startRound();
+    void endRound();
+
+    bool AddBattleInfo(int id, BattleInfo& info);
+    void RmBattleInfo(int id);
+    void ReplaceBattleInfo(int rmId, int addId, BattleInfo& info);
+    BattleRel* Attack(int offense, int defense);
+    std::list<BattleRel*> Attacks(int offense, std::list<int> ids);
+
+protected:
+    BattleInfo* findBattleInfo(int id);
+    BattleRel* attacking(BattleInfo& offense, BattleInfo& defense);
+
+protected:
+    std::map<int, BattleInfo*> battleInfos;
+    std::list<BattleRel*> battleRels;
+};
+
+
+#endif //PETGAME_BATTLESYSTEM_H
